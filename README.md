@@ -1,7 +1,7 @@
 SpreeStripeConnect
 ==================
-
-Introduction goes here.
+ 
+For use with jjeffus' fork of SpreeMultiTenant (spree_multi_tenant gem updated to work with solidus). Allows separate tenants to connect their stripe account with stripe connect, stores their info in a spree_stripe_accounts table and reads from this to send along a destination and application_fee with orders from specific tenant stores so payments can be released directly to these tenants. 
 
 Installation
 ------------
