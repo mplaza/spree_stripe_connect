@@ -3,5 +3,6 @@ Spree::Core::Engine.routes.draw do
   	get '/payment_account' => 'stripe_connect#index'
   	get '/payment_account/setup' => 'stripe_connect#setup'
   	get '/payment_account/authorize' => 'stripe_connect#stripeauth'
+  	get '/payment_account/setup/redirect' => 'stripe_redirect#setup'
   end
 end

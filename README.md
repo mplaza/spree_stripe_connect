@@ -19,6 +19,9 @@ bundle
 bundle exec rails g spree_stripe_connect:install
 ```
 
+Expects ENV['stripe_api_key'] to be the platform account secret key and ENV['stripe_client_id'] to be the platform client id
+
+
 Testing
 -------
 

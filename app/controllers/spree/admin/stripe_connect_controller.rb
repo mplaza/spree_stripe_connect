@@ -12,7 +12,8 @@ class Spree::Admin::StripeConnectController < Spree::Admin::BaseController
 	end
 
 	def stripeauth
-		url = @client.auth_code.authorize_url({:scope => 'read_write'})
+		brand_id = Multitenant.current_tenant.id
+		url = @client.auth_code.authorize_url({:scope => 'read_write', :state => brand_id})
 		redirect_to url
 	end
 
