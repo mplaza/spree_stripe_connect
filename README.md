@@ -1,7 +1,9 @@
 SpreeStripeConnect
 ==================
  
-For use with jjeffus' fork of SpreeMultiTenant (spree_multi_tenant gem updated to work with solidus). Allows separate tenants to connect their stripe account with stripe connect, stores their info in a spree_stripe_accounts table and reads from this to send along a destination and application_fee with orders from specific tenant stores so payments can be released directly to these tenants. 
+For use with jjeffus' fork of SpreeMultiTenant (spree_multi_tenant gem updated to work with solidus). 
+
+Allows separate tenants to connect their stripe account with stripe connect, stores their info in a spree_stripe_accounts table and reads from this to send along a destination and application_fee with orders from specific tenant stores so payments can be released directly to these tenants. 
 
 Installation
 ------------
@@ -19,7 +21,11 @@ bundle
 bundle exec rails g spree_stripe_connect:install
 ```
 
-Expects ENV['stripe_api_key'] to be the platform account secret key and ENV['stripe_client_id'] to be the platform client id
+Expects:
+ENV['stripe_api_key'] to be the platform account secret key 
+ENV['stripe_client_id'] to be the platform client id
+
+Also should add the stripe payment gateway with the platform's credentials folling the solidus_gateway guidelines
 
 
 Testing
