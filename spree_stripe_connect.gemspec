@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'solidus', '~> 1.2.0'
   s.add_dependency 'oauth2'
+  s.add_dependency 'stripe'
 
   s.add_development_dependency 'capybara', '~> 2.4'
   s.add_development_dependency 'coffee-rails'

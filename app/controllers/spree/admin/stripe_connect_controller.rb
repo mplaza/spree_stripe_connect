@@ -21,7 +21,9 @@ class Spree::Admin::StripeConnectController < Spree::Admin::BaseController
 		@resp = @client.auth_code.get_token(code, :params => {:scope => 'read_write'})
     	@access_token = @resp.token
     	@refresh_token = @resp.refresh_token
-    	SpreeStripeAccount.save_tokens(@access_token, @refresh_token)
+    	@stripe_user_id = @resp["stripe_user_id"]
+    	@stripe_publishable_key = @resp["stripe_publishable_key"]
+    	SpreeStripeAccount.save_tokens(@access_token, @refresh_token, @stripe_user_id, @stripe_publishable_key)
 	end
 
 
