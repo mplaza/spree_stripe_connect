@@ -1,10 +1,8 @@
 module Spree
   class Payment < Spree::Base
-  	logger.info('HI TEST')
     Processing.module_eval do
     	alias_method :orig_gateway_options, :gateway_options
     	def gateway_options
-    		logger.info('CHANGING OPTIONS!!')
     		order.reload
 	        options = { email: order.email,
 	                    customer: order.email,
@@ -23,8 +21,13 @@ module Spree
 	        options[:currency] = currency
 
 	        options[:application_fee] = (order.item_total * 16).to_i
-	        t_id = order.tenant_id
-			options[:destination] = SpreeStripeAccount.where(tenant_id: t_id).first.stripe_user_id
+	        #t_id = order.tenant_id
+          #accnt = SpreeStripeAccount.where(tenant_id: t_id).first
+          #if accnt != nil
+          #  options[:destination] = accnt.stripe_user_id
+          #else
+          #  raise "Stripe account not found for tenant: #{t_id}"
+          #end
 
 	        bill_address = source.try(:address)
 	        bill_address ||= order.bill_address

@@ -8,12 +8,12 @@ class Spree::Admin::StripeConnectController < Spree::Admin::BaseController
 	end
 
 	def index
-		
 	end
 
 	def stripeauth
 		brand_id = Multitenant.current_tenant.id
 		url = @client.auth_code.authorize_url({:scope => 'read_write', :state => brand_id})
+    logger.info "Redirect: #{brand_id}: #{@client.inspect}: #{url}"
 		redirect_to url
 	end
 
@@ -25,6 +25,7 @@ class Spree::Admin::StripeConnectController < Spree::Admin::BaseController
     	@stripe_user_id = @resp["stripe_user_id"]
     	@stripe_publishable_key = @resp["stripe_publishable_key"]
     	SpreeStripeAccount.save_tokens(@access_token, @refresh_token, @stripe_user_id, @stripe_publishable_key)
+    redirect_to "/be/admin/"
 	end
 
 
