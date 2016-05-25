@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_stripe_connect'
-  s.version     = '0.4.0'
+  s.version     = '0.5.0'
   s.summary     = 'add in stripe connect'
   s.description = 'allow tenants to connect their stripe accounts for payouts'
   s.required_ruby_version = '>= 1.9.3'
@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_dependency 'solidus', '~> 1.2.0'
+  s.add_dependency 'solidus'
   s.add_dependency 'oauth2'
   s.add_dependency 'stripe'
   s.add_dependency 'solidus_gateway'
