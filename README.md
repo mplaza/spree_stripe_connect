@@ -24,6 +24,7 @@ bundle exec rails g spree_stripe_connect:install
 Expects:
 ENV['stripe_api_key'] to be the platform account secret key 
 ENV['stripe_client_id'] to be the platform client id
+ENV['application_fee_percent'] to be percent fee to be collected by the platform account
 
 Also should add the stripe payment gateway with the platform's credentials folling the solidus_gateway guidelines
 

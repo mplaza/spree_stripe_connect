@@ -20,14 +20,14 @@ module Spree
 	        options[:discount] = order.promo_total * 100
 	        options[:currency] = currency
 
-	        options[:application_fee] = (order.item_total * 16).to_i
-	        #t_id = order.tenant_id
-          #accnt = SpreeStripeAccount.where(tenant_id: t_id).first
-          #if accnt != nil
-          #  options[:destination] = accnt.stripe_user_id
-          #else
-          #  raise "Stripe account not found for tenant: #{t_id}"
-          #end
+	        options[:application_fee] = (order.item_total * ENV['application_fee_percent']).to_i
+	        t_id = order.tenant_id
+          accnt = SpreeStripeAccount.where(tenant_id: t_id).first
+          if accnt != nil
+           options[:destination] = accnt.stripe_user_id
+          else
+           raise "Stripe account not found for tenant: #{t_id}"
+          end
 
 	        bill_address = source.try(:address)
 	        bill_address ||= order.bill_address
