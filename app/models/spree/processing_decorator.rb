@@ -20,7 +20,7 @@ module Spree
 	        options[:discount] = order.promo_total * 100
 	        options[:currency] = currency
 
-	        options[:application_fee] = (order.item_total * ENV['application_fee_percent']).to_i
+	        options[:application_fee] = (order.item_total * ENV['application_fee_percent'].to_i).to_i
 	        t_id = order.tenant_id
           accnt = SpreeStripeAccount.where(tenant_id: t_id).first
           if accnt != nil
