@@ -21,7 +21,7 @@ module Spree
 	        options[:currency] = currency
 	        puts 'this is the ship total'
 	        puts order.ship_total
-	        options[:application_fee] = ( (order.item_total * ENV['application_fee_percent'].to_i) + (order.ship_total * 100)).to_i
+	        options[:application_fee] = ( (order.item_total * ENV['application_fee_percent'].to_i) + (order.ship_total * 100) + 30).to_i 
 	        t_id = order.tenant_id
 	        puts 'the order tenant id'
 	        puts t_id
